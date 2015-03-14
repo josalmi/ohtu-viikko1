@@ -57,7 +57,7 @@ public class VarastoTest {
     public void lisaysIsommallaKuinKapasiteettiTayttaaVaraston() {
         varasto.lisaaVarastoon(99999999);
         
-        assertEquals(varasto.paljonkoMahtuu(), varasto.getSaldo(), vertailuTarkkuus);
+        assertEquals(10, varasto.getSaldo(), vertailuTarkkuus);
     }
 
     @Test
