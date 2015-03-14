@@ -45,6 +45,20 @@ public class VarastoTest {
         // vapaata tilaa pitäisi vielä olla tilavuus-lisättävä määrä eli 2
         assertEquals(2, varasto.paljonkoMahtuu(), vertailuTarkkuus);
     }
+    
+    @Test
+    public void lisaysMiinuksellaEiToimi() {
+        varasto.lisaaVarastoon(-112);
+        
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void lisaysIsommallaKuinKapasiteettiTayttaaVaraston() {
+        varasto.lisaaVarastoon(99999999);
+        
+        assertEquals(varasto.paljonkoMahtuu(), varasto.getSaldo(), vertailuTarkkuus);
+    }
 
     @Test
     public void ottaminenPalauttaaOikeanMaaran() {
@@ -64,6 +78,22 @@ public class VarastoTest {
         // varastossa pitäisi olla tilaa 10 - 8 + 2 eli 4
         assertEquals(4, varasto.paljonkoMahtuu(), vertailuTarkkuus);
     }
+    
+    @Test
+    public void ottaminenNegatiivisellaEiFudaa() {
+        varasto.otaVarastosta(-9999);
+        
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void otetaanLiikaaToimii() {
+        varasto.otaVarastosta(99999);
+        
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+        
+    }
+    
 
     @Test
     public void konstr() {
